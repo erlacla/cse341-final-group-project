@@ -825,13 +825,7 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "enum": [
-              "_id",
-              "firstName",
-              "lastname",
-              "address",
-              "phone"
-            ]
+            "enum": ["_id", "firstName", "lastname", "address", "phone"]
           },
           {
             "name": "searchTerm",
@@ -940,6 +934,179 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "tags": ["status"],
+        "summary": "Get book status information.",
+        "description": "A request to see all book status information.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["status"],
+        "summary": "Add a status to a new book.",
+        "description": "A request to add a status to new books.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/status/{bookId}": {
+      "put": {
+        "tags": ["status"],
+        "summary": "Update book status information.",
+        "description": "A request to update book status information based on book ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["status"],
+        "summary": "Delete book status information.",
+        "description": "A request for administrators to delete book status information.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "parameter",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "deleteAll",
+              "bookId",
+              "accountId",
+              "checkedOut",
+              "returnDate",
+              "checkedIn"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/status/{searchType}/{searchTerm}": {
+      "get": {
+        "tags": ["status"],
+        "summary": "Get book status information based on query.",
+        "description": "A request to see book status information based on search parameters.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "searchType",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "bookId",
+              "accountId",
+              "checkedOut",
+              "returnDate",
+              "checkedIn"
+            ]
+          },
+          {
+            "name": "searchTerm",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
