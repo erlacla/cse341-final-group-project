@@ -144,6 +144,9 @@ const doc = {
           bookId: {
             type: "string",
           },
+          history: {
+            type: "string",
+          },
         },
       }
     },
