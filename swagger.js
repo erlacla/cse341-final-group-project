@@ -10,16 +10,16 @@ const doc = {
   host: "localhost:8080",
   schemes: ["http"],
   tags: [
-    { name: "library", description: "Get library information." },
-    { name: "book", description: "Get general book information." },
-    { name: "account", description: "Get card holder account information." },
+    { name: "library", description: "General library information." },
+    { name: "book", description: "General book information." },
+    { name: "account", description: "Card holder account information." },
     {
       name: "status",
-      description: "Get book information about its current status.",
+      description: "Book information about its current status.",
     },
     {
       name: "history",
-      description: "Get book information about its check out history.",
+      description: "Book information about its check out history.",
     },
   ],
   components: {
@@ -48,10 +48,6 @@ const doc = {
           schedule: {
             type: "string",
             example: "M-F",
-          },
-          image: {
-            type: "string",
-            example: "image_example.com",
           },
           links: {
             type: "list",
@@ -95,10 +91,6 @@ const doc = {
           status: {
             type: "string",
           },
-          images: {
-            type: "list",
-            example: ["image1", "image2"],
-          },
         },
       },
       account: {
@@ -114,9 +106,6 @@ const doc = {
             type: "string",
           },
           phone: {
-            type: "string",
-          },
-          image: {
             type: "string",
           },
           books: {
@@ -156,7 +145,7 @@ const doc = {
             type: "string",
           },
         },
-      },
+      }
     },
   },
 };
@@ -166,8 +155,3 @@ const endpointsFiles = ["./routes/index.js"];
 
 // generate swagger.json
 swaggerAutogen(outputFile, endpointsFiles, doc);
-
-// Run server after it gets generated
-// swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
-//   await import('./server.js');
-// });

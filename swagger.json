@@ -10,34 +10,325 @@
   "tags": [
     {
       "name": "library",
-      "description": "Get library information."
+      "description": "General library information."
     },
     {
       "name": "book",
-      "description": "Get general book information."
+      "description": "General book information."
     },
     {
       "name": "account",
-      "description": "Get card holder account information."
+      "description": "Card holder account information."
     },
     {
       "name": "status",
-      "description": "Get book information about its current status."
+      "description": "Book information about its current status."
     },
     {
       "name": "history",
-      "description": "Get book information about its check out history."
+      "description": "Book information about its check out history."
     }
   ],
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "paths": {
-    "/api-docs": {
+    "/library": {
       "get": {
-        "description": "",
+        "tags": ["library"],
+        "summary": "Get general library information.",
+        "description": "A request to see general library information.",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["library"],
+        "summary": "Add general library information.",
+        "description": "A request add general library information.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/library"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["library"],
+        "summary": "Revise general library information.",
+        "description": "A request to revise general library information.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/library"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["library"],
+        "summary": "Delete general library information.",
+        "description": "A request to delete general library information.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/library/{searchType}": {
+      "get": {
+        "tags": ["library"],
+        "summary": "Get library information based on query.",
+        "description": "A request to see library information based on search parameter.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "parameter",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "_id",
+              "name",
+              "email",
+              "address",
+              "phone",
+              "hours",
+              "schedule",
+              "image",
+              "links"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["library"],
+        "summary": "Delete library information based on query.",
+        "description": "A request to delete library information based on search parameter.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "parameter",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "name",
+              "email",
+              "address",
+              "phone",
+              "hours",
+              "schedule",
+              "image",
+              "links"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/library/libraryImage": {
+      "post": {
+        "tags": ["library"],
+        "summary": "Revise library images.",
+        "description": "A request to revise library images.",
+        "parameters": [
+          {
+            "name": "image",
+            "in": "path",
+            "required": true,
+            "type": "file",
+            "format": "binary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/library/libraryImage/{imageId}": {
+      "get": {
+        "tags": ["library"],
+        "summary": "Get library images based on image ID.",
+        "description": "A request to see library images based on image ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["library"],
+        "summary": "Revise library images.",
+        "description": "A request to revise library images based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "path",
+            "required": true,
+            "type": "file",
+            "format": "binary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["library"],
+        "summary": "Delete library images.",
+        "description": "A request to delete library images based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     }
   },
@@ -60,7 +351,7 @@
             "format": "int32",
             "example": "1234567890"
           },
-          "Hours": {
+          "hours": {
             "type": "string",
             "example": "8AM - 8PM"
           },
@@ -68,16 +359,9 @@
             "type": "string",
             "example": "M-F"
           },
-          "image": {
-            "type": "string",
-            "example": "image_example.com"
-          },
           "links": {
             "type": "list",
-            "example": [
-              "facebook.com",
-              "instagram.com"
-            ]
+            "example": ["facebook.com", "instagram.com"]
           }
         }
       },
@@ -116,13 +400,6 @@
           },
           "status": {
             "type": "string"
-          },
-          "images": {
-            "type": "list",
-            "example": [
-              "image1",
-              "image2"
-            ]
           }
         }
       },
@@ -139,9 +416,6 @@
             "type": "string"
           },
           "phone": {
-            "type": "string"
-          },
-          "image": {
             "type": "string"
           },
           "books": {
