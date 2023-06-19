@@ -41,7 +41,7 @@ const doc = {
             format: "int32",
             example: "1234567890",
           },
-          Hours: {
+          hours: {
             type: "string",
             example: "8AM - 8PM",
           },
