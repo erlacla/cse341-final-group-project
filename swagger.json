@@ -1390,6 +1390,9 @@
         "properties": {
           "bookId": {
             "type": "string"
+          },
+          "history": {
+            "type": "string"
           }
         }
       }
