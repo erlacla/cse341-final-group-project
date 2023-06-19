@@ -52,7 +52,7 @@
       "post": {
         "tags": ["library"],
         "summary": "Add general library information.",
-        "description": "A request add general library information.",
+        "description": "A request to add general library information.",
         "parameters": [
           {
             "name": "body",
@@ -210,8 +210,8 @@
     "/library/libraryImage": {
       "post": {
         "tags": ["library"],
-        "summary": "Revise library images.",
-        "description": "A request to revise library images.",
+        "summary": "Add library images.",
+        "description": "A request to add library images.",
         "parameters": [
           {
             "name": "image",
@@ -310,6 +310,320 @@
         "tags": ["library"],
         "summary": "Delete library images.",
         "description": "A request to delete library images based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/book": {
+      "get": {
+        "tags": ["book"],
+        "summary": "Get general book information.",
+        "description": "A request to see general book information.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["book"],
+        "summary": "Add new book information.",
+        "description": "A request to add new book information.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/book/{bookId}": {
+      "put": {
+        "tags": ["book"],
+        "summary": "Revise book information.",
+        "description": "A request to revise book information based on ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/book"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["book"],
+        "summary": "Add book images.",
+        "description": "A request to add book images based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "path",
+            "required": true,
+            "type": "file",
+            "format": "binary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["book"],
+        "summary": "Delete book information based on query.",
+        "description": "A request to delete book information based on ID and search parameter.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "parameter",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "deleteAll",
+              "name",
+              "author",
+              "publishDate",
+              "publishInfo",
+              "isbn",
+              "format",
+              "edition",
+              "description",
+              "abstract",
+              "genre",
+              "status"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/book/{searchType}/{searchTerm}": {
+      "get": {
+        "tags": ["book"],
+        "summary": "Get book information based on query.",
+        "description": "A request to see book information based on search parameters.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "searchType",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "_id",
+              "name",
+              "author",
+              "publishDate",
+              "publishInfo",
+              "isbn",
+              "format",
+              "edition",
+              "description",
+              "abstract",
+              "genre",
+              "status"
+            ]
+          },
+          {
+            "name": "searchTerm",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/book/bookImage/{imageId}": {
+      "get": {
+        "tags": ["book"],
+        "summary": "Get book images.",
+        "description": "A request to see book image based on image ID.",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["book"],
+        "summary": "Revise book images.",
+        "description": "A request to revise book images based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "path",
+            "required": true,
+            "type": "file",
+            "format": "binary"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["book"],
+        "summary": "Delete book images.",
+        "description": "A request to delete book images based on ID.",
         "parameters": [
           {
             "name": "id",
