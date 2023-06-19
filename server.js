@@ -5,7 +5,7 @@ const port = process.env.PORT || "";
 const mongodb = require("./db/connect");
 
 app
-  .use(express.json)
+  .use(express.json())
   .use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     next();
