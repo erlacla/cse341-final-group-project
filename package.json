@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon server.js",
+    "devStart": "start http://localhost:8080 && nodemon server.js",
     "start": "node server.js",
     "swagger": "node ./swagger.js"
   },
