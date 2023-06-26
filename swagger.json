@@ -1031,46 +1031,7 @@
           }
         }
       },
-      "delete": {
-        "tags": ["status"],
-        "summary": "Delete book status information.",
-        "description": "A request for administrators to delete book status information.",
-        "produces": ["application/json"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "parameter",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "deleteAll",
-              "bookId",
-              "accountId",
-              "checkedOut",
-              "returnDate",
-              "checkedIn"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
+
     "/status/{searchType}/{searchTerm}": {
       "get": {
         "tags": ["status"],
@@ -1398,4 +1359,5 @@
       }
     }
   }
+}
 }
