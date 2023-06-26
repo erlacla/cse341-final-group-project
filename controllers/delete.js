@@ -48,27 +48,24 @@ catch(error) {
   }
 };
 
-const deleteLibraryBySearchType = async (req, res, next) => {
-  try{
-  let searchType = req.params.searchType;
-  if (!UserId.isValid(req.params.id)) {
-    throw new Error("Invalid ID")
-   }
-  const result = await mongodb.getDb().db('LibraryServer').collection('libraryImage').deleteOne({ searchType:  }, true);
-  console.log(result);
-  if (result.deletedCount > 0) {
-    res.status(200).send();
-  } 
-  else {
-    res.status(500).json(result.error);
-  }
-}
-catch(error) {
+// const deleteLibraryBySearchType = async (req, res, next) => {
+//   try{
+//   let searchType = req.params.searchType;
+//   const result = await mongodb.getDb().db('LibraryServer').collection('libraryImage').deleteOne({searchType:  }, true);
+//   console.log(result);
+//   if (result.deletedCount > 0) {
+//     res.status(200).send();
+//   } 
+//   else {
+//     res.status(500).json(result.error);
+//   }
+// }
+// catch(error) {
 
-  res.status(500).json({message : "Your request was not able to be processed"})
+//   res.status(500).json({message : "Your request was not able to be processed"})
   
-  }
-};
+//   }
+// };
 
 
   const deleteLibraryImage = async (req, res, next) => {
