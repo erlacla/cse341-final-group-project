@@ -53,11 +53,20 @@ const doc = {
             type: "list",
             example: ["facebook.com", "instagram.com"],
           },
+          image: {
+            required: false,
+            description: "Upload an image for the library.",
+            type: "string",
+            format: "base64",
+          },
         },
       },
       book: {
         type: "object",
         properties: {
+          libraryId: {
+            type: "string",
+          },
           name: {
             type: "string",
           },
@@ -88,14 +97,20 @@ const doc = {
           genre: {
             type: "string",
           },
-          status: {
+          image: {
+            required: false,
+            description: "Upload an image for the book.",
             type: "string",
+            format: "base64",
           },
         },
       },
       account: {
         type: "object",
         properties: {
+          libraryId: {
+            type: "string",
+          },
           firstName: {
             type: "string",
           },
@@ -115,6 +130,12 @@ const doc = {
           holds: {
             type: "string",
             example: "none",
+          },
+          image: {
+            required: false,
+            description: "Upload an image for the account.",
+            type: "string",
+            format: "base64",
           },
         },
       },
@@ -145,10 +166,11 @@ const doc = {
             type: "string",
           },
           history: {
-            type: "string",
+            type: "list",
+            example: ["accountId, checkedOut, returnDate, checkedIn"],
           },
         },
-      }
+      },
     },
   },
 };
