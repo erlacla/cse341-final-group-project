@@ -32,6 +32,8 @@ const doc = {
           },
           email: {
             type: "string",
+            format: "email",
+            example: "library@email.com",
           },
           address: {
             type: "string",
@@ -50,7 +52,7 @@ const doc = {
             example: "M-F",
           },
           links: {
-            type: "list",
+            type: "array",
             example: ["facebook.com", "instagram.com"],
           },
           image: {
@@ -76,11 +78,12 @@ const doc = {
           publishDate: {
             type: "string",
           },
-          publichInfo: {
+          publishInfo: {
             type: "string",
           },
           isbn: {
-            type: "string",
+            type: "number",
+            example: "9783161484100",
           },
           format: {
             type: "string",
@@ -121,15 +124,16 @@ const doc = {
             type: "string",
           },
           phone: {
-            type: "string",
+            type: "number",
+            example: "1234567890",
           },
           books: {
-            type: "string",
-            example: "none",
+            type: "array",
+            example: ["book1", "book2", "book3"],
           },
           holds: {
-            type: "string",
-            example: "none",
+            type: "array",
+            example: ["book1", "book2", "book3"],
           },
           image: {
             required: false,
@@ -150,12 +154,15 @@ const doc = {
           },
           checkedOut: {
             type: "string",
+            format: "date",
           },
           returnDate: {
             type: "string",
+            format: "date",
           },
           checkedIn: {
-            type: "string",
+            type: "boolean",
+            example: false,
           },
         },
       },
@@ -166,8 +173,33 @@ const doc = {
             type: "string",
           },
           history: {
-            type: "list",
-            example: ["accountId, checkedOut, returnDate, checkedIn"],
+            type: "object",
+            items: {
+              statusId: {
+                type: "string",
+              },
+              accountId: {
+                type: "string",
+              },
+              checkedOut: {
+                type: "string",
+                format: "date",
+              },
+              returnDate: {
+                type: "string",
+                format: "date",
+              },
+              checkedIn: {
+                type: "boolean",
+              },
+            },
+            example: {
+              statusId: "string",
+              accountId: "string",
+              checkedOut: "YYYY-MM-DD",
+              returnDate: "YYYY-MM-DD",
+              checkedIn: true,
+            },
           },
         },
       },
