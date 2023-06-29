@@ -5,7 +5,7 @@
     "description": "LibraryServe API provides information about the library, books, book history and library card holders.",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "libraryserve.onrender.com",
   "basePath": "/",
   "tags": [
     {
@@ -29,7 +29,7 @@
       "description": "Book information about its check out history."
     }
   ],
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/library": {
       "get": {
@@ -81,6 +81,12 @@
         "description": "A request to add general library information based on ID.",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -113,6 +119,12 @@
         "description": "A request to revise general library information based on ID.",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -143,7 +155,14 @@
         "tags": ["library"],
         "summary": "Delete general library information.",
         "description": "A request to delete general library information based on ID.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
