@@ -5,5 +5,6 @@ routes.get("/", (req, res) => {
 });
 
 routes.use("/", require("./swagger"));
+routes.use("/", require("./post"));
 
 module.exports = routes;

@@ -48,44 +48,12 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/library/{libraryId}": {
-      "get": {
-        "tags": ["library"],
-        "summary": "Get general library information.",
-        "description": "A request to see general library information based on ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
       },
       "post": {
         "tags": ["library"],
         "summary": "Add general library information.",
-        "description": "A request to add general library information based on ID.",
+        "description": "A request to add new library information.",
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "body",
             "in": "body",
@@ -107,6 +75,32 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/library/{libraryId}": {
+      "get": {
+        "tags": ["library"],
+        "summary": "Get general library information.",
+        "description": "A request to see general library information based on ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -365,15 +359,9 @@
       },
       "post": {
         "tags": ["book"],
-        "summary": "Add book images.",
-        "description": "A request to add book images based on ID.",
+        "summary": "Add a new book.",
+        "description": "A request to add a new book.",
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
           {
             "name": "body",
             "in": "body",
@@ -1359,7 +1347,9 @@
             "type": "string"
           },
           "email": {
-            "type": "string"
+            "type": "string",
+            "format": "email",
+            "example": "library@email.com"
           },
           "address": {
             "type": "string"
@@ -1378,7 +1368,7 @@
             "example": "M-F"
           },
           "links": {
-            "type": "list",
+            "type": "array",
             "example": ["facebook.com", "instagram.com"]
           },
           "image": {
@@ -1404,11 +1394,12 @@
           "publishDate": {
             "type": "string"
           },
-          "publichInfo": {
+          "publishInfo": {
             "type": "string"
           },
           "isbn": {
-            "type": "string"
+            "type": "number",
+            "example": "9783161484100"
           },
           "format": {
             "type": "string"
@@ -1449,15 +1440,16 @@
             "type": "string"
           },
           "phone": {
-            "type": "string"
+            "type": "number",
+            "example": "1234567890"
           },
           "books": {
-            "type": "string",
-            "example": "none"
+            "type": "array",
+            "example": ["book1", "book2", "book3"]
           },
           "holds": {
-            "type": "string",
-            "example": "none"
+            "type": "array",
+            "example": ["book1", "book2", "book3"]
           },
           "image": {
             "required": false,
@@ -1477,13 +1469,16 @@
             "type": "string"
           },
           "checkedOut": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "returnDate": {
-            "type": "string"
+            "type": "string",
+            "format": "date"
           },
           "checkedIn": {
-            "type": "string"
+            "type": "boolean",
+            "example": false
           }
         }
       },
@@ -1494,8 +1489,35 @@
             "type": "string"
           },
           "history": {
-            "type": "list",
-            "example": ["accountId, checkedOut, returnDate, checkedIn"]
+            "type": "object",
+            "items": {
+              "properties": {
+                "statusId": {
+                  "type": "string"
+                },
+                "accountId": {
+                  "type": "string"
+                },
+                "checkedOut": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "returnDate": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "checkedIn": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "example": {
+              "statusId": "string",
+              "accountId": "string",
+              "checkedOut": "YYYY-MM-DD",
+              "returnDate": "YYYY-MM-DD",
+              "checkedIn": true
+            }
           }
         }
       }
