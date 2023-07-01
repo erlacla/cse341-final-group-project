@@ -32,6 +32,8 @@ const doc = {
           },
           email: {
             type: "string",
+            format: "email",
+            example: "library@email.com",
           },
           address: {
             type: "string",
@@ -50,14 +52,23 @@ const doc = {
             example: "M-F",
           },
           links: {
-            type: "list",
+            type: "array",
             example: ["facebook.com", "instagram.com"],
+          },
+          image: {
+            required: false,
+            description: "Upload an image for the library.",
+            type: "string",
+            format: "base64",
           },
         },
       },
       book: {
         type: "object",
         properties: {
+          libraryId: {
+            type: "string",
+          },
           name: {
             type: "string",
           },
@@ -67,11 +78,12 @@ const doc = {
           publishDate: {
             type: "string",
           },
-          publichInfo: {
+          publishInfo: {
             type: "string",
           },
           isbn: {
-            type: "string",
+            type: "number",
+            example: "9783161484100",
           },
           format: {
             type: "string",
@@ -88,14 +100,20 @@ const doc = {
           genre: {
             type: "string",
           },
-          status: {
+          image: {
+            required: false,
+            description: "Upload an image for the book.",
             type: "string",
+            format: "base64",
           },
         },
       },
       account: {
         type: "object",
         properties: {
+          libraryId: {
+            type: "string",
+          },
           firstName: {
             type: "string",
           },
@@ -106,15 +124,22 @@ const doc = {
             type: "string",
           },
           phone: {
-            type: "string",
+            type: "number",
+            example: "1234567890",
           },
           books: {
-            type: "string",
-            example: "none",
+            type: "array",
+            example: ["book1", "book2", "book3"],
           },
           holds: {
+            type: "array",
+            example: ["book1", "book2", "book3"],
+          },
+          image: {
+            required: false,
+            description: "Upload an image for the account.",
             type: "string",
-            example: "none",
+            format: "base64",
           },
         },
       },
@@ -129,12 +154,15 @@ const doc = {
           },
           checkedOut: {
             type: "string",
+            format: "date",
           },
           returnDate: {
             type: "string",
+            format: "date",
           },
           checkedIn: {
-            type: "string",
+            type: "boolean",
+            example: false,
           },
         },
       },
@@ -145,10 +173,36 @@ const doc = {
             type: "string",
           },
           history: {
-            type: "string",
+            type: "object",
+            items: {
+              statusId: {
+                type: "string",
+              },
+              accountId: {
+                type: "string",
+              },
+              checkedOut: {
+                type: "string",
+                format: "date",
+              },
+              returnDate: {
+                type: "string",
+                format: "date",
+              },
+              checkedIn: {
+                type: "boolean",
+              },
+            },
+            example: {
+              statusId: "string",
+              accountId: "string",
+              checkedOut: "YYYY-MM-DD",
+              returnDate: "YYYY-MM-DD",
+              checkedIn: true,
+            },
           },
         },
-      }
+      },
     },
   },
 };
