@@ -89,7 +89,7 @@
         "description": "A request to see general library information based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -113,7 +113,7 @@
         "description": "A request to revise general library information based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -151,7 +151,7 @@
         "description": "A request to delete general library information based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -178,7 +178,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -221,7 +221,7 @@
         "description": "A request to revise specific library parameters based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -281,7 +281,7 @@
         "description": "A request to revise library images based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -319,7 +319,7 @@
         "description": "A request to delete library images based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -396,7 +396,7 @@
         "description": "A request to see general book information based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -420,7 +420,7 @@
         "description": "A request to revise book information based on ID",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -459,7 +459,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -486,7 +486,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -534,7 +534,7 @@
         "description": "A request to revise book images based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -598,7 +598,7 @@
         "description": "A request to revise book images based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -636,7 +636,7 @@
         "description": "A request to delete book images based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -713,7 +713,7 @@
         "description": "A request for administrators to see card holder information based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -737,7 +737,7 @@
         "description": "A request to revise card holder information based on ID",
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -776,7 +776,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -803,7 +803,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -847,7 +847,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -904,7 +904,7 @@
         "description": "A request to revise card holder image based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -942,7 +942,7 @@
         "description": "A request to delete card holder image based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1019,7 +1019,7 @@
         "description": "A request to update book status information based on book ID",
         "parameters": [
           {
-            "name": "id",
+            "name": "statusId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1058,7 +1058,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "statusId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1099,7 +1099,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "statusId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1140,7 +1140,7 @@
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "statusId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1246,7 +1246,7 @@
         "description": "A request to see book history information based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1276,7 +1276,7 @@
         "description": "A request to update history of books based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1314,7 +1314,7 @@
         "description": "A request for administrators to delete a history from books based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
