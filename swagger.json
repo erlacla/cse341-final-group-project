@@ -189,7 +189,6 @@
             "required": true,
             "type": "string",
             "enum": [
-              "_id",
               "name",
               "email",
               "address",
