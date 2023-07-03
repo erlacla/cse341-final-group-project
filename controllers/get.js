@@ -5,7 +5,7 @@ const ObjectId = require("mongodb").ObjectId;
 // Library
 const getLibraryAll = async (req, res, next) => {
     try {
-      const result = await mongodb.getDb().db().collection('library').find();
+      const result = await mongodb.getDb().db('LibraryServe').collection('library').find();
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -20,12 +20,12 @@ const getLibraryAll = async (req, res, next) => {
       const libraryId = req.params.libraryId;
       const result = await mongodb
       .getDb()
-      .db()
+      .db('LibraryServe')
       .collection('library')
       .find({ _id: libraryId });
       result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists[0]);
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists[0]);
     })
     } catch(err) {
       res.status(400).json({ message: err });
@@ -55,7 +55,7 @@ const getLibraryAll = async (req, res, next) => {
                 const libraryId = new ObjectId(searchTerm);
                 const result = await mongodb
                   .getDb()
-                  .db()
+                  .db('LibraryServe')
                   .collection('library')
                   .find({ _id : libraryId });
                 result.toArray().then((lists) => {
@@ -66,7 +66,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "name") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ name: searchTerm });
                 result.toArray().then((lists) => {
@@ -76,7 +76,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "email") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ email: searchTerm });
                 result.toArray().then((lists) => {
@@ -86,7 +86,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "address") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ address: searchTerm });
                 result.toArray().then((lists) => {
@@ -96,7 +96,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "phone") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ phone: searchTerm });
                 result.toArray().then((lists) => {
@@ -106,7 +106,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "hours") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ hours: searchTerm });
                 result.toArray().then((lists) => {
@@ -116,7 +116,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "schedule") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ schedule: searchTerm });
                 result.toArray().then((lists) => {
@@ -126,7 +126,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "image") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ image: searchTerm });
                 result.toArray().then((lists) => {
@@ -136,7 +136,7 @@ const getLibraryAll = async (req, res, next) => {
           } else if (searchType == "links") {
             const result = await mongodb
                 .getDb()
-                .db()
+                .db('LibraryServe')
                 .collection('library')
                 .find({ links: searchTerm });
                 result.toArray().then((lists) => {
@@ -154,7 +154,7 @@ const getLibraryAll = async (req, res, next) => {
   // Book
   const getBook = async (req, res, next) => {
     try {
-      const result = await mongodb.getDb().db().collection('book').find();
+      const result = await mongodb.getDb().db('LibraryServe').collection('book').find();
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -169,12 +169,12 @@ const getLibraryAll = async (req, res, next) => {
       const bookId = req.params.bookId;
       const result = await mongodb
       .getDb()
-      .db()
+      .db('LibraryServe')
       .collection('book')
       .find({ _id: bookId });
       result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists[0]);
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists[0]);
     })
     } catch(err) {
       res.status(400).json({ message: err });
@@ -186,7 +186,7 @@ const getLibraryAll = async (req, res, next) => {
   // Account
   const getAccount = async (req, res, next) => {
     try {
-      const result = await mongodb.getDb().db().collection('account').find();
+      const result = await mongodb.getDb().db('LibraryServe').collection('account').find();
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -201,7 +201,7 @@ const getLibraryAll = async (req, res, next) => {
       const accountId = req.params.accountId;
       const result = await mongodb
       .getDb()
-      .db()
+      .db('LibraryServe')
       .collection('account')
       .find({ _id: accountId });
       result.toArray().then((lists) => {
@@ -218,7 +218,7 @@ const getLibraryAll = async (req, res, next) => {
   // Status
   const getStatus = async (req, res, next) => {
     try {
-      const result = await mongodb.getDb().db().collection('status').find();
+      const result = await mongodb.getDb().db('LibraryServe').collection('status').find();
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -233,7 +233,7 @@ const getLibraryAll = async (req, res, next) => {
   // History
   const getHistory = async (req, res, next) => {
     try {
-      const result = await mongodb.getDb().db().collection('history').find();
+      const result = await mongodb.getDb().db('LibraryServe').collection('history').find();
       result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
@@ -248,7 +248,7 @@ const getLibraryAll = async (req, res, next) => {
       const bookId = req.params.bookId;
       const result = await mongodb
       .getDb()
-      .db()
+      .db('LibraryServe')
       .collection('history')
       .find({ bookId: bookId });
       result.toArray().then((lists) => {

@@ -5,7 +5,7 @@
     "description": "LibraryServe API provides information about the library, books, book history and library card holders.",
     "version": "1.0.0"
   },
-  "host": "libraryserve.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "tags": [
     {
@@ -29,7 +29,7 @@
       "description": "Book information about its check out history."
     }
   ],
-  "schemes": ["https"],
+  "schemes": ["http"],
   "paths": {
     "/library": {
       "get": {
