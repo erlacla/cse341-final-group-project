@@ -8,19 +8,36 @@ history = {};
 librarycon.updateLibparam = async (req, res) => {
   try {
     const item = req.params.parameter;
-    const itemName = req.body[item];
+
     if (!item) {
       return res.status(400).json({ message: "All fields are required" });
     }
-    const updatedparam = await libModel.findByIdAndUpdate(
-      req.params.libraryId,
-      {
-        $set: { [item]: itemName },
-      },
-      { new: true }
-    );
-    if (!updatedparam) {
-      return res.status(404).json({ message: "Parameter not found" });
+    if (item == "links") {
+      const itemName = req.body;
+      const updatedparam = await libModel.findByIdAndUpdate(
+        req.params.libraryId,
+        {
+          $push: { [item]: itemName },
+        },
+        { new: true }
+      );
+      if (!updatedparam) {
+        return res.status(404).json({ message: "Parameter not found" });
+      }
+    } else if (item == "image") {
+      ///
+    } else {
+      const itemName = req.body[item];
+      const updatedparam = await libModel.findByIdAndUpdate(
+        req.params.libraryId,
+        {
+          $set: { [item]: itemName },
+        },
+        { new: true }
+      );
+      if (!updatedparam) {
+        return res.status(404).json({ message: "Parameter not found" });
+      }
     }
   } catch (err) {
     console.error(err);
