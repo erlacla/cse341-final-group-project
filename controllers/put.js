@@ -1,4 +1,9 @@
 const libModel = require("../models/libmodel");
+const multer = require("multer");
+// const storage = multer.diskStorage({
+//   destination: 'upload'
+// });
+const upload = multer({ dest: "uploads/" });
 librarycon = {};
 bookcon = {};
 accountcon = {};
@@ -25,7 +30,21 @@ librarycon.updateLibparam = async (req, res) => {
         return res.status(404).json({ message: "Parameter not found" });
       }
     } else if (item == "image") {
-      ///
+      upload.single("image");
+      // const itemName = req.body;
+      const imageFile = req.file;
+      const updatedparam = await libModel.findByIdAndUpdate(
+        req.params.libraryId,
+        {
+          $set: {
+            [item]: { data: imageFile.buffer, contentType: imageFile.mimetype },
+          },
+        },
+        { new: true }
+      );
+      if (!updatedparam) {
+        return res.status(404).json({ message: "Parameter not found" });
+      }
     } else {
       const itemName = req.body[item];
       const updatedparam = await libModel.findByIdAndUpdate(
