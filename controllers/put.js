@@ -1,5 +1,7 @@
 const libModel = require("../models/libmodel");
 const multer = require("multer");
+const mongoose = require("mongoose");
+
 // const storage = multer.diskStorage({
 //   destination: 'upload'
 // });
@@ -46,7 +48,10 @@ updateLibparam = async (req, res) => {
         return res.status(404).json({ message: "Parameter not found" });
       }
     } else {
+      console.log("yo1");
       const itemName = req.body[item];
+      console.log(itemName);
+      console.log();
       const updatedparam = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
@@ -66,6 +71,7 @@ updateLibparam = async (req, res) => {
 
 updateLib = async (req, res) => {
   console.log("hey");
+  libraryId = new mongoose.Types.ObjectId(req.params.libraryId);
   try {
     const { name, email, address, phone, hours, schedule, links, image } =
       req.body;
@@ -80,21 +86,18 @@ updateLib = async (req, res) => {
     ) {
       return res.status(400).json({ message: "All fields are requeired" });
     } else {
-      const updatedLib = await libModel.findByIdAndUpdate(
-        req.params.libraryId,
-        {
-          name,
-          email,
-          address,
-          phone,
-          hours,
-          schedule,
-          links,
-          image,
-        },
-        { new: true }
-      );
-      console.log(req.params.libraryId);
+      const updatedLib = await libModel.findByIdAndUpdate(libraryId, {
+        name,
+        email,
+        address,
+        phone,
+        hours,
+        schedule,
+        links,
+        image,
+      });
+
+      console.log(updatedLib);
       if (!updatedLib) {
         return res.status(404).json({ message: "Library not found" });
       }
