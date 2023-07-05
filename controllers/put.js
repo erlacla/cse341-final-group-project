@@ -10,7 +10,7 @@ accountcon = {};
 statuscon = {};
 history = {};
 
-librarycon.updateLibparam = async (req, res) => {
+updateLibparam = async (req, res) => {
   try {
     const item = req.params.parameter;
 
@@ -64,65 +64,54 @@ librarycon.updateLibparam = async (req, res) => {
   }
 };
 
-librarycon.updateLib = async (req, res) => {
+updateLib = async (req, res) => {
+  console.log("hey");
   try {
-    const {
-      libraryId,
-      name,
-      author,
-      publishDate,
-      publishInfo,
-      isbn,
-      format,
-      edition,
-      description,
-      abstract,
-      genre,
-      image,
-    } = req.body;
+    const { name, email, address, phone, hours, schedule, links, image } =
+      req.body;
     if (
-      !libraryId ||
       !name ||
-      !author ||
-      !publishDate ||
-      !publishInfo ||
-      !isbn ||
-      !format ||
-      !edition ||
-      !description ||
-      !abstract ||
-      !genre ||
-      !image
+      !email ||
+      !address ||
+      !phone ||
+      !hours ||
+      !schedule ||
+      !links
     ) {
       return res.status(400).json({ message: "All fields are requeired" });
     } else {
       const updatedLib = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
-          libraryId,
           name,
-          author,
-          publishDate,
-          publishInfo,
-          isbn,
-          format,
-          edition,
-          description,
-          abstract,
-          genre,
+          email,
+          address,
+          phone,
+          hours,
+          schedule,
+          links,
           image,
         },
         { new: true }
       );
+      console.log(req.params.libraryId);
       if (!updatedLib) {
         return res.status(404).json({ message: "Library not found" });
       }
       res.status(200).json({ message: "Library updated successfully" });
     }
-  } catch {
+  } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal server error" });
   }
 };
 
-module.exports = { librarycon, bookcon, accountcon, statuscon, history };
+module.exports = {
+  updateLib,
+  updateLibparam,
+  librarycon,
+  bookcon,
+  accountcon,
+  statuscon,
+  history,
+};

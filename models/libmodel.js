@@ -35,5 +35,5 @@ const LibSchema = new mongoose.Schema({
   },
 });
 
-const Lib = mongoose.model("library", LibSchema, "library");
+const Lib = mongoose.model("Lib", LibSchema, "library");
 module.exports = Lib;

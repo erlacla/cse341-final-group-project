@@ -239,7 +239,8 @@
               "phone",
               "hours",
               "schedule",
-              "links"
+              "links",
+              "image"
             ]
           },
           {
