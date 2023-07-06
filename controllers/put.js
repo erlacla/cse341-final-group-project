@@ -21,6 +21,8 @@ updateLibparam = async (req, res) => {
     }
     if (item == "links") {
       const itemName = req.body;
+      console.log(itemName);
+      console.log(req.params.libraryId);
       const updatedparam = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
@@ -31,6 +33,7 @@ updateLibparam = async (req, res) => {
       if (!updatedparam) {
         return res.status(404).json({ message: "Parameter not found" });
       }
+      res.status(200).json({ message: "item updated successfully" });
     } else if (item == "image") {
       upload.single("image");
       // const itemName = req.body;
@@ -48,10 +51,8 @@ updateLibparam = async (req, res) => {
         return res.status(404).json({ message: "Parameter not found" });
       }
     } else {
-      console.log("yo1");
       const itemName = req.body;
-      console.log(itemName);
-      console.log(req.params.libraryId);
+
       const updatedparam = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
