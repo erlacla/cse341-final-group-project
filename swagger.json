@@ -220,9 +220,10 @@
         "tags": ["library"],
         "summary": "Revise general library information.",
         "description": "A request to revise specific library parameters based on ID.",
+        "consumes": ["text/plain; charset=utf-8"],
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -248,12 +249,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],

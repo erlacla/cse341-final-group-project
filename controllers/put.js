@@ -49,9 +49,9 @@ updateLibparam = async (req, res) => {
       }
     } else {
       console.log("yo1");
-      const itemName = req.body[item];
+      const itemName = req.body;
       console.log(itemName);
-      console.log();
+      console.log(req.params.libraryId);
       const updatedparam = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
@@ -59,9 +59,11 @@ updateLibparam = async (req, res) => {
         },
         { new: true }
       );
+      console.log("hello");
       if (!updatedparam) {
         return res.status(404).json({ message: "Parameter not found" });
       }
+      res.status(200).json({ message: "item updated successfully" });
     }
   } catch (err) {
     console.error(err);
