@@ -220,7 +220,10 @@
         "tags": ["library"],
         "summary": "Revise general library information.",
         "description": "A request to revise specific library parameters based on ID.",
-        "consumes": ["text/plain; charset=utf-8"],
+        "consumes": [
+          "text/plain; charset=utf-8",
+          "multipart/form-data; boundary=MfnBoundry"
+        ],
         "parameters": [
           {
             "name": "libraryId",

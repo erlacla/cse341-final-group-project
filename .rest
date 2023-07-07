@@ -1,0 +1,14 @@
+PUT  http://localhost:8080/library/649dbfe7b6e57157805c3874/image
+Content-Type: multipart/form-data; boundary=MfnBoundry
+
+--MfnBoundry
+Content-Disposition: form-data; name="image"; filename="new.jpg"
+Content-Type: image/jpeg
+
+< ./Users/okuja/Downloads/yk.jfif
+--MfnBoundry--
+
+
+
+
+

@@ -1,8 +1,12 @@
 const putRoutes = require("express").Router();
 const putController = require("../controllers/put");
 
-putRoutes.put("/library/:libraryId", putController.updateLib);
-putRoutes.put("/library/:libraryId/:parameter", putController.updateLibparam);
+putRoutes.put("/library/:libraryId", putController.librarycon.updateLib);
+putRoutes.put(
+  "/library/:libraryId/:parameter",
+  putController.librarycon.handleImageUpload,
+  putController.librarycon.updateLibparam
+);
 // putRoutes.put("/library/libraryImage/:libraryId", putController);
 
 // putRoutes.put("/book/:bookId", putController);

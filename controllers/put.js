@@ -2,17 +2,23 @@ const libModel = require("../models/libmodel");
 const multer = require("multer");
 const mongoose = require("mongoose");
 
-// const storage = multer.diskStorage({
-//   destination: 'upload'
-// });
-const upload = multer({ dest: "uploads/" });
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads"); // Specify the directory where you want to store the uploaded files
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname); // Generate a unique file name for the uploaded file
+  },
+});
+const upload = multer({ Storage: storage });
 librarycon = {};
 bookcon = {};
 accountcon = {};
 statuscon = {};
 history = {};
 
-updateLibparam = async (req, res) => {
+//Library obj
+librarycon.updateLibparam = async (req, res) => {
   try {
     const item = req.params.parameter;
 
@@ -21,8 +27,7 @@ updateLibparam = async (req, res) => {
     }
     if (item == "links") {
       const itemName = req.body;
-      console.log(itemName);
-      console.log(req.params.libraryId);
+
       const updatedparam = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
@@ -38,6 +43,8 @@ updateLibparam = async (req, res) => {
       upload.single("image");
       // const itemName = req.body;
       const imageFile = req.file;
+      console.log(imageFile);
+      console.log(req.params.libraryId);
       const updatedparam = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
@@ -50,6 +57,7 @@ updateLibparam = async (req, res) => {
       if (!updatedparam) {
         return res.status(404).json({ message: "Parameter not found" });
       }
+      res.status(200).json({ message: "item updated successfully" });
     } else {
       const itemName = req.body;
 
@@ -72,7 +80,15 @@ updateLibparam = async (req, res) => {
   }
 };
 
-updateLib = async (req, res) => {
+librarycon.handleImageUpload = (req, res, next) => {
+  if (req.params.parameter === "image") {
+    upload.single("image")(req, res, next);
+  } else {
+    next();
+  }
+};
+
+librarycon.updateLib = async (req, res) => {
   console.log("hey");
   libraryId = new mongoose.Types.ObjectId(req.params.libraryId);
   try {
@@ -112,9 +128,9 @@ updateLib = async (req, res) => {
   }
 };
 
+//library obj ends
+
 module.exports = {
-  updateLib,
-  updateLibparam,
   librarycon,
   bookcon,
   accountcon,
