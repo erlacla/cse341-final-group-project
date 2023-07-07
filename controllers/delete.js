@@ -63,6 +63,27 @@ catch(error) {
   
 //   }
 // };
+const deleteLibraryById = async (req, res, next) => {
+  try{
+  const libraryId = new Id(req.params.id);
+  if (!Id.isValid(req.params.id)) {
+    throw new Error("Invalid ID")
+   }
+  const result = await mongodb.getDb().db('LibraryServer').collection('libraryImage').deleteOne({ _id: libraryId }, true);
+  console.log(result);
+  if (result.deletedCount > 0) {
+    res.status(200).send();
+  } 
+  else {
+    res.status(500).json(result.error);
+  }
+}
+catch(error) {
+
+  res.status(500).json({message : "Your request was not able to be processed"})
+  
+  }
+};
 
 
   const deleteLibraryImage = async (req, res, next) => {
@@ -199,7 +220,7 @@ catch(error) {
     }
   };
 
-module.exports = {deleteLibraryBySearchType, deleteLibraryImage, deleteAccountByID, deleteAccountImage, deleteBookByID, deleteBookImage, deleteHistoryByID, deleteStatusByID}
+module.exports = {deleteLibraryById, deleteLibraryImage, deleteAccountByID, deleteAccountImage, deleteBookByID, deleteBookImage, deleteHistoryByID}
 
 
 // const searchType = req.params.searchType;
