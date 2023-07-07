@@ -3,17 +3,17 @@ const Id = require ('mongodb').ObjectId
 const {body, validationResult, param} = require("express-validator");
 const { all } = require('../routes/delete');
 
-const contactRules = () => {
-  return [
-      body("itemName").trim().escape().isLength({min:1}).withMessage("Error, Item Name is required."),
-      body("itemCost").trim().escape().isLength({min:1}).withMessage("Error, Item Cost is required."),
-      body("itemQuantityInStock").trim().escape().isLength({min:1}).withMessage("Error, Quantity Required"),
-      body("vendorID").trim().escape().isLength({min:1}).withMessage("Error, Vendor ID is required."),
-      body("vendorLocation").trim().escape().isLength({min:1}).withMessage("Error, Vendor Location is required."),
-      body("itemImagePath").trim().escape().isLength({min:1}).withMessage("Error, Item Image path is required."),
-      body("itemAlt").trim().escape().isLength({min:1}).withMessage("Error, Item Description is required."),
-  ]
-}
+// const contactRules = () => {
+//   return [
+//       body("itemName").trim().escape().isLength({min:1}).withMessage("Error, Item Name is required."),
+//       body("itemCost").trim().escape().isLength({min:1}).withMessage("Error, Item Cost is required."),
+//       body("itemQuantityInStock").trim().escape().isLength({min:1}).withMessage("Error, Quantity Required"),
+//       body("vendorID").trim().escape().isLength({min:1}).withMessage("Error, Vendor ID is required."),
+//       body("vendorLocation").trim().escape().isLength({min:1}).withMessage("Error, Vendor Location is required."),
+//       body("itemImagePath").trim().escape().isLength({min:1}).withMessage("Error, Item Image path is required."),
+//       body("itemAlt").trim().escape().isLength({min:1}).withMessage("Error, Item Description is required."),
+//   ]
+// }
 
 // const contactsValidator = (req, res, next) => {
 //   let errors = [];
