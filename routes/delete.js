@@ -3,7 +3,7 @@ const router = express.Router();
 const Controller = require('../controllers/delete');
 
 router.delete('/library', Controller.deleteStoreItem);
-router.delete('/library/:searchType', Controller.deleteLibraryBySearchType);
+// router.delete('/library/:searchType', Controller.deleteLibraryBySearchType);  THIS NEEDS TO BE A PUT REQUEST INSTEAD
 router.delete('/library/libraryImage/:id', Controller.deleteLibraryImage); // done
 
 router.delete('/book/:id', Controller.deleteBookByID); // done
