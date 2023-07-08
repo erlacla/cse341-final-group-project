@@ -95,11 +95,12 @@ const getLibraryAll = async (req, res, next) => {
                 res.status(200).json(lists[0]);
                 })
           } else if (searchType == "phone") {
+            const phone = parseInt(searchTerm, 32);
             const result = await mongodb
                 .getDb()
                 .db('LibraryServe')
                 .collection('library')
-                .find({ phone: searchTerm });
+                .find({ phone: phone });
                 result.toArray().then((lists) => {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json(lists[0]);
@@ -436,11 +437,12 @@ const getLibraryAll = async (req, res, next) => {
                 res.status(200).json(lists[0]);
                 })
         } else if (searchType == "phone") {
+            const phone = parseInt(searchTerm, 32);
             const result = await mongodb
                 .getDb()
                 .db('LibraryServe')
                 .collection('account')
-                .find({ phone: searchTerm });
+                .find({ phone: phone });
                 result.toArray().then((lists) => {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json(lists[0]);
@@ -561,11 +563,12 @@ const getLibraryAll = async (req, res, next) => {
                 res.status(200).json(lists[0]);
                 })
           } else if (searchType == "checkedIn") {
+              const checkedIn = Boolean(searchTerm);
               const result = await mongodb
                 .getDb()
                 .db('LibraryServe')
                 .collection('status')
-                .find({ checkedIn: searchTerm });
+                .find({ checkedIn: checkedIn });
                 result.toArray().then((lists) => {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json(lists[0]);
