@@ -29,7 +29,7 @@ const { all } = require('../routes/delete');
 
 const deleteLibrary = async (req, res, next) => {
   try{
-  const result = await mongodb.getDb().db('LibraryServer').collection('library').deleteMany({}, true);
+  const result = await mongodb.getDb().db('LibraryServe').collection('library').deleteMany({}, true);
   console.log(result);
   if (result.deletedCount > 0) {
     res.status(200).send();
@@ -69,7 +69,7 @@ const deleteLibraryById = async (req, res, next) => {
   if (!Id.isValid(req.params.id)) {
     throw new Error("Invalid ID")
    }
-  const result = await mongodb.getDb().db('LibraryServer').collection('libraryImage').deleteOne({ _id: libraryId }, true);
+  const result = await mongodb.getDb().db('LibraryServe').collection('libraryImage').deleteOne({ _id: libraryId }, true);
   console.log(result);
   if (result.deletedCount > 0) {
     res.status(200).send();
@@ -92,7 +92,7 @@ catch(error) {
     if (!Id.isValid(req.params.id)) {
       throw new Error("Invalid ID")
      }
-    const result = await mongodb.getDb().db('LibraryServer').collection('libraryImage').deleteOne({ _id: imageId }, true);
+    const result = await mongodb.getDb().db('LibraryServe').collection('libraryImage').deleteOne({ _id: imageId }, true);
     console.log(result);
     if (result.deletedCount > 0) {
       res.status(200).send();
@@ -114,7 +114,7 @@ catch(error) {
     if (!Id.isValid(req.params.id)) {
       throw new Error("Invalid ID")
      }
-    const result = await mongodb.getDb().db('LibraryServer').collection('book').deleteOne({ _id: bookId }, true);
+    const result = await mongodb.getDb().db('LibraryServe').collection('book').deleteOne({ _id: bookId }, true);
     console.log(result);
     if (result.deletedCount > 0) {
       res.status(200).send();
@@ -136,7 +136,7 @@ catch(error) {
     if (!Id.isValid(req.params.id)) {
       throw new Error("Invalid ID")
      }
-    const result = await mongodb.getDb().db('LibraryServer').collection('bookImages').deleteOne({ _id: imageId }, true);
+    const result = await mongodb.getDb().db('LibraryServe').collection('bookImages').deleteOne({ _id: imageId }, true);
     console.log(result);
     if (result.deletedCount > 0) {
       res.status(200).send();
@@ -158,7 +158,7 @@ catch(error) {
     if (!Id.isValid(req.params.id)) {
       throw new Error("Invalid ID")
      }
-    const result = await mongodb.getDb().db('LibraryServer').collection('account').deleteOne({ _id: accountId }, true);
+    const result = await mongodb.getDb().db('LibraryServe').collection('account').deleteOne({ _id: accountId }, true);
     console.log(result);
     if (result.deletedCount > 0) {
       res.status(200).send();
@@ -180,7 +180,7 @@ catch(error) {
     if (!Id.isValid(req.params.id)) {
       throw new Error("Invalid ID")
      }
-    const result = await mongodb.getDb().db('LibraryServer').collection('accountImage').deleteOne({ _id: imageId }, true);
+    const result = await mongodb.getDb().db('LibraryServe').collection('accountImage').deleteOne({ _id: imageId }, true);
     console.log(result);
     if (result.deletedCount > 0) {
       res.status(200).send();
@@ -204,7 +204,7 @@ catch(error) {
     if (!Id.isValid(req.params.id)) {
       throw new Error("Invalid ID")
      }
-    const result = await mongodb.getDb().db('LibraryServer').collection('history').deleteOne({ _id: historyId }, true);
+    const result = await mongodb.getDb().db('LibraryServe').collection('history').deleteOne({ _id: historyId }, true);
     console.log(result);
     if (result.deletedCount > 0) {
       res.status(200).send();
