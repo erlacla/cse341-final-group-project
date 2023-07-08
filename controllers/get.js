@@ -259,11 +259,12 @@ const getLibraryAll = async (req, res, next) => {
                 res.status(200).json(lists[0]);
                 })
         } else if (searchType == "isbn") {
+            const isbn = Number(searchTerm);
             const result = await mongodb
                 .getDb()
                 .db('LibraryServe')
                 .collection('book')
-                .find({ isbn: searchTerm });
+                .find({ isbn: isbn });
                 result.toArray().then((lists) => {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json(lists[0]);
