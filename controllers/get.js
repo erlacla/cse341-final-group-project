@@ -1,3 +1,4 @@
+const { Int32 } = require("mongodb");
 const mongodb = require("../db/connect");
 const ObjectId = require("mongodb").ObjectId;
 
@@ -513,7 +514,7 @@ const getLibraryAll = async (req, res, next) => {
             if (!ObjectId.isValid(searchTerm)) {
                 res.status(400).json("ID must be alphanumeric, 24 characters long.");
             } else {
-                const bookId = new ObjectId(searchTerm);
+                const bookId = searchTerm;
                 const result = await mongodb
                   .getDb()
                   .db('LibraryServe')
@@ -528,7 +529,7 @@ const getLibraryAll = async (req, res, next) => {
             if (!ObjectId.isValid(searchTerm)) {
                 res.status(400).json("ID must be alphanumeric, 24 characters long.");
             } else {
-                const accountId = new ObjectId(searchTerm);
+                const accountId = searchTerm;
                 const result = await mongodb
                   .getDb()
                   .db('LibraryServe')
@@ -593,7 +594,7 @@ const getLibraryAll = async (req, res, next) => {
 
   const getHistorySingle = async (req, res, next) => {
     try {
-      const bookId = new ObjectId(req.params.bookId);
+      const bookId = req.params.bookId;
       const result = await mongodb
       .getDb()
       .db('LibraryServe')
