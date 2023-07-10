@@ -11,16 +11,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ Storage: storage });
 
-// putRoutes.put(
-//   "/library/image/:libraryId",
-//   upload.single("image"),
-//   putController.librarycon.updateimg
-// );
+putRoutes.put(
+  "/library/image/:libraryId",
+  upload.single("image"),
+  putController.librarycon.updateimg
+);
 
-// putRoutes.put(
-//   "/library/:libraryId/:parameter",
-//   putController.librarycon.updateLibparam
-// );
+putRoutes.put(
+  "/library/:libraryId/:parameter",
+  putController.librarycon.updateLibparam
+);
 
 putRoutes.put("/library/:libraryId", putController.librarycon.updateLib);
 

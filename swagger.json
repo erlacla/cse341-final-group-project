@@ -113,7 +113,7 @@
         "description": "A request to revise general library information based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -279,17 +279,18 @@
       "put": {
         "tags": ["library"],
         "summary": "Revise library images.",
+        "consumes": ["multipart/form-data"],
         "description": "A request to revise library images based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "libraryId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
-            "in": "formdata",
+            "name": "image",
+            "in": "formData",
             "type": "file",
             "required": true
           }

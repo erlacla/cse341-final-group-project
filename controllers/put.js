@@ -91,8 +91,9 @@ librarycon.updateimg = async (req, res) => {
 };
 
 librarycon.updateLib = async (req, res) => {
-  console.log("hey");
+  console.log(req.params.libraryId);
   libraryId = new mongoose.Types.ObjectId(req.params.libraryId);
+  console.log(libraryId);
   try {
     const { name, email, address, phone, hours, schedule, links, image } =
       req.body;
