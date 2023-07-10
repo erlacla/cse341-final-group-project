@@ -4,10 +4,13 @@ const putController = require("../controllers/put");
 putRoutes.put("/library/:libraryId", putController.librarycon.updateLib);
 putRoutes.put(
   "/library/:libraryId/:parameter",
-  putController.librarycon.handleImageUpload,
   putController.librarycon.updateLibparam
 );
-// putRoutes.put("/library/libraryImage/:libraryId", putController);
+putRoutes.put(
+  "/library/image/:libraryId",
+  putController.librarycon.handleImageUpload,
+  putController.librarycon.updateimg
+);
 
 // putRoutes.put("/book/:bookId", putController);
 // putRoutes.put("/book/:bookId/:param", putController);

@@ -27,7 +27,6 @@ librarycon.updateLibparam = async (req, res) => {
     }
     if (item == "links") {
       const itemName = req.body;
-
       const updatedparam = await libModel.findByIdAndUpdate(
         req.params.libraryId,
         {
@@ -35,28 +34,11 @@ librarycon.updateLibparam = async (req, res) => {
         },
         { new: true }
       );
+
       if (!updatedparam) {
         return res.status(404).json({ message: "Parameter not found" });
       }
-      res.status(200).json({ message: "item updated successfully" });
-    } else if (item == "image") {
-      upload.single("image");
-      // const itemName = req.body;
-      const imageFile = req.file;
-      console.log(imageFile);
-      console.log(req.params.libraryId);
-      const updatedparam = await libModel.findByIdAndUpdate(
-        req.params.libraryId,
-        {
-          $set: {
-            [item]: { data: imageFile.buffer, contentType: imageFile.mimetype },
-          },
-        },
-        { new: true }
-      );
-      if (!updatedparam) {
-        return res.status(404).json({ message: "Parameter not found" });
-      }
+      console.log(updatedparam);
       res.status(200).json({ message: "item updated successfully" });
     } else {
       const itemName = req.body;
@@ -72,6 +54,7 @@ librarycon.updateLibparam = async (req, res) => {
       if (!updatedparam) {
         return res.status(404).json({ message: "Parameter not found" });
       }
+      console.log(updatedparam);
       res.status(200).json({ message: "item updated successfully" });
     }
   } catch (err) {
@@ -81,11 +64,28 @@ librarycon.updateLibparam = async (req, res) => {
 };
 
 librarycon.handleImageUpload = (req, res, next) => {
-  if (req.params.parameter === "image") {
-    upload.single("image")(req, res, next);
-  } else {
-    next();
+  console.log("222");
+  upload.single("image");
+};
+
+librarycon.updateimg = async (req, res) => {
+  // const itemName = req.body;
+  const imageFile = req.file;
+  console.log(imageFile);
+  console.log(req.params.libraryId);
+  const updatedparam = await libModel.findByIdAndUpdate(
+    { _id: req.params.libraryId },
+    {
+      $set: {
+        image: { data: imageFile.buffer, contentType: imageFile.mimetype },
+      },
+    },
+    { new: true }
+  );
+  if (!updatedparam) {
+    return res.status(404).json({ message: "Parameter not found" });
   }
+  res.status(200).json({ message: "item updated successfully" });
 };
 
 librarycon.updateLib = async (req, res) => {

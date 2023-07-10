@@ -275,7 +275,7 @@
         }
       }
     },
-    "/library/libraryImage/{libraryId}": {
+    "/library/image/{libraryId}": {
       "put": {
         "tags": ["library"],
         "summary": "Revise library images.",
@@ -289,11 +289,9 @@
           },
           {
             "name": "body",
-            "in": "path",
-            "required": false,
-            "description": "Upload an image for the library.",
-            "type": "string",
-            "format": "base64"
+            "in": "formdata",
+            "type": "file",
+            "required": true
           }
         ],
         "responses": {
