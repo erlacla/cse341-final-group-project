@@ -1,16 +1,28 @@
 const putRoutes = require("express").Router();
 const putController = require("../controllers/put");
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./uploads"); // Specify the directory where you want to store the uploaded files
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname); // Generate a unique file name for the uploaded file
+  },
+});
+const upload = multer({ Storage: storage });
+
+// putRoutes.put(
+//   "/library/image/:libraryId",
+//   upload.single("image"),
+//   putController.librarycon.updateimg
+// );
+
+// putRoutes.put(
+//   "/library/:libraryId/:parameter",
+//   putController.librarycon.updateLibparam
+// );
 
 putRoutes.put("/library/:libraryId", putController.librarycon.updateLib);
-putRoutes.put(
-  "/library/:libraryId/:parameter",
-  putController.librarycon.updateLibparam
-);
-putRoutes.put(
-  "/library/image/:libraryId",
-  putController.librarycon.handleImageUpload,
-  putController.librarycon.updateimg
-);
 
 // putRoutes.put("/book/:bookId", putController);
 // putRoutes.put("/book/:bookId/:param", putController);

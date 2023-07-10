@@ -2,15 +2,15 @@ const libModel = require("../models/libmodel");
 const multer = require("multer");
 const mongoose = require("mongoose");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./uploads"); // Specify the directory where you want to store the uploaded files
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname); // Generate a unique file name for the uploaded file
-  },
-});
-const upload = multer({ Storage: storage });
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "./uploads"); // Specify the directory where you want to store the uploaded files
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + "-" + file.originalname); // Generate a unique file name for the uploaded file
+//   },
+// });
+// const upload = multer({ Storage: storage });
 librarycon = {};
 bookcon = {};
 accountcon = {};
@@ -19,6 +19,7 @@ history = {};
 
 //Library obj
 librarycon.updateLibparam = async (req, res) => {
+  console.log("hello");
   try {
     const item = req.params.parameter;
 
@@ -63,18 +64,19 @@ librarycon.updateLibparam = async (req, res) => {
   }
 };
 
-librarycon.handleImageUpload = (req, res, next) => {
-  console.log("222");
-  upload.single("image");
-};
+// librarycon.handleImageUpload = (req, res, next) => {
+//   console.log(req.params.libraryId);
+//   console.log("222");
+//   upload.single("image");
+// };
 
 librarycon.updateimg = async (req, res) => {
-  // const itemName = req.body;
+  console.log("223");
   const imageFile = req.file;
   console.log(imageFile);
   console.log(req.params.libraryId);
   const updatedparam = await libModel.findByIdAndUpdate(
-    { _id: req.params.libraryId },
+    { _id: new mongoose.Types.ObjectId(req.params.libraryId) },
     {
       $set: {
         image: { data: imageFile.buffer, contentType: imageFile.mimetype },
