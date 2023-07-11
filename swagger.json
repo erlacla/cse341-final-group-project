@@ -219,6 +219,10 @@
         "tags": ["library"],
         "summary": "Revise general library information.",
         "description": "A request to revise specific library parameters based on ID.",
+        "consumes": [
+          "text/plain; charset=utf-8",
+          "multipart/form-data; boundary=MfnBoundry"
+        ],
         "parameters": [
           {
             "name": "libraryId",
@@ -238,7 +242,8 @@
               "phone",
               "hours",
               "schedule",
-              "links"
+              "links",
+              "image"
             ]
           },
           {
@@ -246,12 +251,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -274,10 +274,11 @@
         }
       }
     },
-    "/library/libraryImage/{libraryId}": {
+    "/library/image/{libraryId}": {
       "put": {
         "tags": ["library"],
         "summary": "Revise library images.",
+        "consumes": ["multipart/form-data"],
         "description": "A request to revise library images based on ID.",
         "parameters": [
           {
@@ -287,12 +288,10 @@
             "type": "string"
           },
           {
-            "name": "body",
-            "in": "path",
-            "required": false,
-            "description": "Upload an image for the library.",
-            "type": "string",
-            "format": "base64"
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true
           }
         ],
         "responses": {
@@ -532,6 +531,7 @@
         "tags": ["book"],
         "summary": "Revise book images.",
         "description": "A request to revise book images based on ID.",
+        "consumes": ["text/plain; charset=utf-8"],
         "parameters": [
           {
             "name": "bookId",
@@ -540,7 +540,7 @@
             "type": "string"
           },
           {
-            "name": "parameter",
+            "name": "param",
             "in": "path",
             "required": true,
             "type": "string",
@@ -563,12 +563,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -591,10 +586,11 @@
         }
       }
     },
-    "/book/bookImage/{bookId}": {
+    "/book/bookimage/{bookId}": {
       "put": {
         "tags": ["book"],
         "summary": "Revise book images.",
+        "consumes": ["multipart/form-data"],
         "description": "A request to revise book images based on ID.",
         "parameters": [
           {
@@ -604,12 +600,10 @@
             "type": "string"
           },
           {
-            "name": "body",
-            "in": "path",
-            "required": true,
-            "description": "Upload an image for the book.",
-            "type": "string",
-            "format": "base64"
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true
           }
         ],
         "responses": {
@@ -795,7 +789,7 @@
         }
       }
     },
-    "/account/{accountId}/{parameter}": {
+    "/account/{accountId}/{param}": {
       "get": {
         "tags": ["account"],
         "summary": "Get card holder information based on query.",
@@ -844,6 +838,10 @@
         "tags": ["account"],
         "summary": "Revise book information.",
         "description": "A request to revise specific book parameters based on ID.",
+        "consumes": [
+          "text/plain; charset=utf-8",
+          "multipart/form-data; boundary=MfnBoundry"
+        ],
         "produces": ["application/json"],
         "parameters": [
           {
@@ -853,7 +851,7 @@
             "type": "string"
           },
           {
-            "name": "parameter",
+            "name": "param",
             "in": "path",
             "required": true,
             "type": "string",
@@ -872,12 +870,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -897,10 +890,11 @@
         }
       }
     },
-    "/account/accountImage/{accountId}": {
+    "/account/image/{accountId}": {
       "put": {
         "tags": ["account"],
         "summary": "Revise card holder image.",
+        "consumes": ["multipart/form-data"],
         "description": "A request to revise card holder image based on ID.",
         "parameters": [
           {
@@ -910,12 +904,10 @@
             "type": "string"
           },
           {
-            "name": "body",
-            "in": "path",
-            "required": true,
-            "description": "Upload an image for the account.",
-            "type": "string",
-            "format": "base64"
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true
           }
         ],
         "responses": {
@@ -1137,6 +1129,7 @@
         "tags": ["status"],
         "summary": "Revise status information.",
         "description": "A request to revise specific status parameters based on ID.",
+        "consumes": ["text/plain; charset=utf-8"],
         "produces": ["application/json"],
         "parameters": [
           {
@@ -1163,12 +1156,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
