@@ -137,7 +137,7 @@ catch(error) {
     if (!Id.isValid(req.params.accountId)) {
       throw new Error("Invalid ID")
      }
-    const result = await mongodb.getDb().db('LibraryServe').collection('account').deleteOne({ _id: accountId }, {$set: {"image" :"N/A"}});
+    const result = await mongodb.getDb().db('LibraryServe').collection('account').updateOne({ _id: accountId }, {$set: {"image" :"N/A"}});
     console.log(result);
     if (result.modifiedCount > 0) {
       res.status(200).send();

@@ -851,7 +851,7 @@
             "type": "string"
           },
           {
-            "name": "param",
+            "name": "parameter",
             "in": "path",
             "required": true,
             "type": "string",

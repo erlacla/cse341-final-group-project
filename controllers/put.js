@@ -297,7 +297,7 @@ accountcon.updateaccount = async (req, res) => {
 
 accountcon.updateaccountparam = async (req, res) => {
   try {
-    const item = req.params.param;
+    const item = req.params.parameter;
     console.log(item);
 
     if (!item) {
@@ -401,7 +401,7 @@ statuscon.updatestatus = async (req, res) => {
 
 statuscon.updatestatusparam = async (req, res) => {
   try {
-    const item = req.params.param;
+    const item = req.params.parameter;
     if (!item) {
       return res.status(400).json({ message: "All fields are required" });
     }
