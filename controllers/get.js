@@ -529,7 +529,7 @@ const getLibraryAll = async (req, res, next) => {
                 .getDb()
                 .db('LibraryServe')
                 .collection('status')
-                .find({ _id : statusId }).project({ returnedDate: 1, _id:0});
+                .find({ _id : statusId }).project({ returnDate: 1, _id:0});
                 result.toArray().then((lists) => {
                 res.setHeader('Content-Type', 'application/json');
                 res.status(200).json(lists[0]);

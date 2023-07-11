@@ -789,7 +789,7 @@
         }
       }
     },
-    "/account/{accountId}/{param}": {
+    "/account/{accountId}/{parameter}": {
       "get": {
         "tags": ["account"],
         "summary": "Get card holder information based on query.",
