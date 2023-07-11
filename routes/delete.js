@@ -2,17 +2,16 @@ const express = require('express');
 const router = express.Router();
 const Controller = require('../controllers/delete');
 
-// router.delete('/library/:searchType', Controller.deleteLibraryBySearchType);  THIS NEEDS TO BE A PUT REQUEST INSTEAD
-router.delete('/library/libraryImage/:id', Controller.deleteLibraryImage); // done
+router.delete('/library/libraryImage/:id', Controller.deleteLibraryImage);
 
-router.delete('/book/:id', Controller.deleteBookByID); // done
-router.delete('/book/bookImage/:id', Controller.deleteBookImage); // done
+router.delete('/book/:id', Controller.deleteBookByID); 
+router.delete('/book/bookImage/:id', Controller.deleteBookImage);
 
-router.delete('/account/:id', Controller.deleteAccountByID); // done
-router.delete('/account/accountImage/:id', Controller.deleteAccountImage); // done
+router.delete('/account/:id', Controller.deleteAccountByID);
+router.delete('/account/accountImage/:id', Controller.deleteAccountImage);
 
 
-router.delete('/history/:id', Controller.deleteHistoryByID); // done execpt needs to make sure is admin before deleting
+router.delete('/history/:id', Controller.deleteHistoryByID);
 
 
 
