@@ -29,7 +29,7 @@ putRoutes.put(
   upload.single("image"),
   putController.bookcon.updatebookimg
 );
-putRoutes.put("/book/:bookId/:param", putController.bookcon.updatebookparam);
+putRoutes.put("/book/:bookId/:parameter", putController.bookcon.updatebookparam);
 putRoutes.put("/book/:bookId", putController.bookcon.updatebook);
 
 //account
@@ -39,7 +39,7 @@ putRoutes.put(
   putController.accountcon.updateaccountimg
 );
 putRoutes.put(
-  "/account/:accountId/:param",
+  "/account/:accountId/:parameter",
   putController.accountcon.updateaccountparam
 );
 putRoutes.put("/account/:accountId", putController.accountcon.updateaccount);
@@ -47,7 +47,7 @@ putRoutes.put("/account/:accountId", putController.accountcon.updateaccount);
 //status
 putRoutes.put("/status/:statusId", putController.statuscon.updatestatus);
 putRoutes.put(
-  "/status/:statusId/:param",
+  "/status/:statusId/:parameter",
   putController.statuscon.updatestatusparam
 );
 

@@ -202,7 +202,7 @@ bookcon.updatebook = async (req, res) => {
 
 bookcon.updatebookparam = async (req, res) => {
   try {
-    const item = req.params.param;
+    const item = req.params.parameter;
 
     if (!item) {
       return res.status(400).json({ message: "All fields are required" });
