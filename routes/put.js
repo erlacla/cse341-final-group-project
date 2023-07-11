@@ -11,30 +11,47 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ Storage: storage });
 
+//library
 putRoutes.put(
   "/library/image/:libraryId",
   upload.single("image"),
   putController.librarycon.updateimg
 );
-
 putRoutes.put(
   "/library/:libraryId/:parameter",
   putController.librarycon.updateLibparam
 );
-
 putRoutes.put("/library/:libraryId", putController.librarycon.updateLib);
 
-// putRoutes.put("/book/:bookId", putController);
-// putRoutes.put("/book/:bookId/:param", putController);
-// putRoutes.put("/book/bookImage/:bookId", putController);
+//book
+putRoutes.put(
+  "/book/bookimage/:bookId",
+  upload.single("image"),
+  putController.bookcon.updatebookimg
+);
+putRoutes.put("/book/:bookId/:param", putController.bookcon.updatebookparam);
+putRoutes.put("/book/:bookId", putController.bookcon.updatebook);
 
-// putRoutes.put("/account/:accountId", putController);
-// putRoutes.put("/account/:accountId/:param", putController);
-// putRoutes.put("/account/accountImage/:accountId", putController);
+//account
+putRoutes.put(
+  "/account/image/:accountId",
+  upload.single("image"),
+  putController.accountcon.updateaccountimg
+);
+putRoutes.put(
+  "/account/:accountId/:param",
+  putController.accountcon.updateaccountparam
+);
+putRoutes.put("/account/:accountId", putController.accountcon.updateaccount);
 
-// putRoutes.put("/status/:statusId", putController);
-// putRoutes.put("/status/:statusId/:param", putController);
+//status
+putRoutes.put("/status/:statusId", putController.statuscon.updatestatus);
+putRoutes.put(
+  "/status/:statusId/:param",
+  putController.statuscon.updatestatusparam
+);
 
-// putRoutes.put("/history/:bookId", putController);
+//
+putRoutes.put("/history/:bookId", putController.historycon.updatestatus);
 
 module.exports = putRoutes;

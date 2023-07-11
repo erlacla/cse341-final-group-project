@@ -420,7 +420,7 @@
         "description": "A request to revise book information based on ID",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -532,15 +532,16 @@
         "tags": ["book"],
         "summary": "Revise book images.",
         "description": "A request to revise book images based on ID.",
+        "consumes": ["text/plain; charset=utf-8"],
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "parameter",
+            "name": "param",
             "in": "path",
             "required": true,
             "type": "string",
@@ -563,12 +564,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -591,25 +587,24 @@
         }
       }
     },
-    "/book/bookImage/{bookId}": {
+    "/book/bookimage/{bookId}": {
       "put": {
         "tags": ["book"],
         "summary": "Revise book images.",
+        "consumes": ["multipart/form-data"],
         "description": "A request to revise book images based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
-            "in": "path",
-            "required": true,
-            "description": "Upload an image for the book.",
-            "type": "string",
-            "format": "base64"
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true
           }
         ],
         "responses": {
@@ -737,7 +732,7 @@
         "description": "A request to revise card holder information based on ID",
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -795,7 +790,7 @@
         }
       }
     },
-    "/account/{accountId}/{parameter}": {
+    "/account/{accountId}/{param}": {
       "get": {
         "tags": ["account"],
         "summary": "Get card holder information based on query.",
@@ -844,16 +839,20 @@
         "tags": ["account"],
         "summary": "Revise book information.",
         "description": "A request to revise specific book parameters based on ID.",
+        "consumes": [
+          "text/plain; charset=utf-8",
+          "multipart/form-data; boundary=MfnBoundry"
+        ],
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "parameter",
+            "name": "param",
             "in": "path",
             "required": true,
             "type": "string",
@@ -872,12 +871,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -897,25 +891,24 @@
         }
       }
     },
-    "/account/accountImage/{accountId}": {
+    "/account/image/{accountId}": {
       "put": {
         "tags": ["account"],
         "summary": "Revise card holder image.",
+        "consumes": ["multipart/form-data"],
         "description": "A request to revise card holder image based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "accountId",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
-            "name": "body",
-            "in": "path",
-            "required": true,
-            "description": "Upload an image for the account.",
-            "type": "string",
-            "format": "base64"
+            "name": "image",
+            "in": "formData",
+            "type": "file",
+            "required": true
           }
         ],
         "responses": {
@@ -1019,7 +1012,7 @@
         "description": "A request to update book status information based on book ID",
         "parameters": [
           {
-            "name": "id",
+            "name": "statusId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1137,10 +1130,11 @@
         "tags": ["status"],
         "summary": "Revise status information.",
         "description": "A request to revise specific status parameters based on ID.",
+        "consumes": ["text/plain; charset=utf-8"],
         "produces": ["application/json"],
         "parameters": [
           {
-            "name": "id",
+            "name": "statusId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1163,12 +1157,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "parameter": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -1276,7 +1265,7 @@
         "description": "A request to update history of books based on ID.",
         "parameters": [
           {
-            "name": "id",
+            "name": "bookId",
             "in": "path",
             "required": true,
             "type": "string"
