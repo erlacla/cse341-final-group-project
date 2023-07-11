@@ -25,7 +25,7 @@ putRoutes.put("/library/:libraryId", putController.librarycon.updateLib);
 
 //book
 putRoutes.put(
-  "/book/bookimage/:bookId",
+  "/book/image/:bookId",
   upload.single("image"),
   putController.bookcon.updatebookimg
 );

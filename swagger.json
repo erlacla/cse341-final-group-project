@@ -586,7 +586,7 @@
         }
       }
     },
-    "/book/bookimage/{bookId}": {
+    "/book/image/{bookId}": {
       "put": {
         "tags": ["book"],
         "summary": "Revise book images.",
