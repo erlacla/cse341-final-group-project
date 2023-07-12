@@ -1054,20 +1054,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "parameter",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "deleteAll",
-              "bookId",
-              "accountId",
-              "checkedOut",
-              "returnDate",
-              "checkedIn"
-            ]
           }
         ],
         "responses": {
