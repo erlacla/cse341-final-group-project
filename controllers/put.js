@@ -23,7 +23,6 @@ historycon = {};
 
 //Library obj
 librarycon.updateLibparam = async (req, res) => {
-  console.log("hello");
   try {
     const item = req.params.parameter;
 
@@ -55,7 +54,6 @@ librarycon.updateLibparam = async (req, res) => {
         },
         { new: true }
       );
-      console.log("hello");
       if (!updatedparam) {
         return res.status(404).json({ message: "Parameter not found" });
       }
@@ -75,7 +73,6 @@ librarycon.updateLibparam = async (req, res) => {
 // };
 
 librarycon.updateimg = async (req, res) => {
-  console.log("223");
   const imageFile = req.file;
   console.log(imageFile);
   console.log(req.params.libraryId);
@@ -215,7 +212,6 @@ bookcon.updatebookparam = async (req, res) => {
       },
       { new: true }
     );
-    console.log("hello");
     if (!updatedparam) {
       return res.status(404).json({ message: "Parameter not found" });
     }
@@ -320,7 +316,6 @@ accountcon.updateaccountparam = async (req, res) => {
       console.log(updatedparam);
       res.status(200).json({ message: "item updated successfully" });
     } else {
-      console.log("232");
       const itemName = req.body;
       console.log("2", itemName);
       const updatedparam = await AccModel.findByIdAndUpdate(
@@ -330,7 +325,6 @@ accountcon.updateaccountparam = async (req, res) => {
         },
         { new: true }
       );
-      console.log("hello");
       if (!updatedparam) {
         return res.status(404).json({ message: "Parameter not found" });
       }
@@ -344,7 +338,6 @@ accountcon.updateaccountparam = async (req, res) => {
 };
 
 accountcon.updateaccountimg = async (req, res) => {
-  console.log("223");
   const imageFile = req.file;
   console.log(imageFile);
   console.log(req.params.accountId);
@@ -413,7 +406,6 @@ statuscon.updatestatusparam = async (req, res) => {
       },
       { new: true }
     );
-    console.log("hello");
     if (!updatedparam) {
       return res.status(404).json({ message: "Parameter not found" });
     }

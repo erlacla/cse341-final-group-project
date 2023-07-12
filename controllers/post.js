@@ -320,7 +320,6 @@ const createHistory = async (req, res) => {
       bookId: req.body.bookId,
       history: req.body.history,
     };
-    console.log(data);
     if (typeof data.bookId != "string") {
       failMessage += "To create a new book History, enter a bookId string.\n";
     }
