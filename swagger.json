@@ -1213,14 +1213,14 @@
         }
       }
     },
-    "/history/{bookId}": {
+    "/history/{historyId}": {
       "get": {
         "tags": ["history"],
         "summary": "Get book history information.",
         "description": "A request to see book history information based on ID.",
         "parameters": [
           {
-            "name": "bookId",
+            "name": "historyId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1250,7 +1250,7 @@
         "description": "A request to update history of books based on ID.",
         "parameters": [
           {
-            "name": "bookId",
+            "name": "historyId",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1288,7 +1288,7 @@
         "description": "A request for administrators to delete a history from books based on ID.",
         "parameters": [
           {
-            "name": "bookId",
+            "name": "historyId",
             "in": "path",
             "required": true,
             "type": "string"

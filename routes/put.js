@@ -52,6 +52,6 @@ putRoutes.put(
 );
 
 //
-putRoutes.put("/history/:bookId", putController.historycon.updatestatus);
+putRoutes.put("/history/:historyId", putController.historycon.updatestatus);
 
 module.exports = putRoutes;

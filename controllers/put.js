@@ -427,7 +427,7 @@ statuscon.updatestatusparam = async (req, res) => {
 
 //history start
 historycon.updatestatus = async (req, res) => {
-  historyId = new mongoose.Types.ObjectId(req.params.bookId);
+  historyId = new mongoose.Types.ObjectId(req.params.historyId);
   console.log(historyId);
   try {
     const {
@@ -447,11 +447,7 @@ historycon.updatestatus = async (req, res) => {
     } else {
       const updated = await HistoryModel.findByIdAndUpdate(historyId, {
         bookId,
-        accountId,
-        statusId,
-        checkedOut,
-        returnDate,
-        checkedIn,
+        history: { statusId, accountId, checkedOut, returnDate, checkedIn },
       });
 
       console.log(updated);
