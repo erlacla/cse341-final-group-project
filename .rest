@@ -1,0 +1,20 @@
+PUT  http://localhost:8080/library/image/649dbfe7b6e57157805c3874/
+Content-Type: multipart/form-data; boundary=MfnBoundry
+
+--MfnBoundry
+Content-Disposition: form-data; name="image"; filename="new.jpg"
+Content-Type: image/jpeg
+
+< ./Users/okuja/Downloads/yk.jfif
+--MfnBoundry--
+
+###
+# PUT  http://localhost:8080/library/image/library649dbfe7b6e57157805c3874
+# Content-Type: application/json
+
+# {
+#    "client_email" : "taneshabautista@yahoo.com",
+#    "client_password" : "Tinish$H208M"
+# }
+
+

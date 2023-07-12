@@ -32,6 +32,6 @@ getRoutes.get("/status/:statusId/:parameter", getController.getStatusByParameter
 // History requests
 getRoutes.get("/history", getController.getHistory);
 
-getRoutes.get("/history/:bookId", getController.getHistorySingle);
+getRoutes.get("/history/:historyId", getController.getHistorySingle);
 
 module.exports = getRoutes;
