@@ -24,10 +24,14 @@ describe('insert', () => {
 
       const mockLibrary = {
         id: 'some-user-id',
-        firstName: 'Emily',
-        lastName: 'Button',
+        name: 'Emily',
         email: 'emilyButton@gmail.com',
-        age: 25,
+        address: 'address',
+        phone: 'phone',
+        hours: 'hours',
+        schedule: 'schedule',
+        links: 'links',
+        image: 'image',
       };
 
       await users.insertOne(mockLibrary);

@@ -4,8 +4,8 @@ const { expect } = require('@jest/globals');
 const request = supertest(app);
 
 describe('Test Library POST requests', () => {
-  test('responds to post /library', async () => {
-    const res = await request.post('/library').send({
+  test('responds to post /routes/library', async () => {
+    const res = await request.post('/routes/library').send({
       name: 'Emily',
       email: 'emilyButton@gmail.com',
       address: 'address',
