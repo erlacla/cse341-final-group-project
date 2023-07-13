@@ -11,7 +11,7 @@ describe('insert', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = await connection.db('library');
+    db = connection.db('library');
   });
   afterAll(async () => {
     await connection.close();
