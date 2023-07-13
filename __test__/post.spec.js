@@ -1,15 +1,19 @@
-const postRoutes = require('../routes/post');
+const app = require('../server');
 const supertest = require('supertest');
 const { expect } = require('@jest/globals');
-const request = supertest(postRoutes);
+const request = supertest(app);
 
-describe('Test Handlers', () => {
-  test('responds to post /users', async () => {
-    const res = await request.post('/users').send({
-      firstName: 'Emily',
-      lastName: 'Button',
+describe('Test Library POST requests', () => {
+  test('responds to post /library', async () => {
+    const res = await request.post('/library').send({
+      name: 'Emily',
       email: 'emilyButton@gmail.com',
-      age: 25,
+      address: 'address',
+      phone: 'phone',
+      hours: 'hours',
+      schedule: 'schedule',
+      links: 'links',
+      image: 'image',
     });
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(201);

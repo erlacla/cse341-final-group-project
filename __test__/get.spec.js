@@ -1,17 +1,23 @@
-const getRoutes = require('../routes/get');
+const app = require('../server');
 const supertest = require('supertest');
 const { expect } = require('@jest/globals');
-const request = supertest(getRoutes);
+const request = supertest(app);
 
-describe('Test Handlers', () => {
-  test('responds to /', async () => {
-    const res = await request.get('/');
+describe('Test Library GET requests', () => {
+  test('responds to /library', async () => {
+    const res = await request.get('/library');
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(200);
   });
 
-  test('responds to /users', async () => {
-    const res = await request.get('/users');
+  test('responds to /library/:libraryId', async () => {
+    const res = await request.get('/library/:libraryId');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+    expect(res.statusCode).toBe(200);
+  });
+
+  test('responds to /library/:libraryId/:parameter', async () => {
+    const res = await request.get('/library/:libraryId/:parameter');
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
     expect(res.statusCode).toBe(200);
   });
