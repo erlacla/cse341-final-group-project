@@ -3,9 +3,9 @@ const supertest = require('supertest');
 const { expect } = require('@jest/globals');
 const request = supertest(postRoutes);
 
-describe('Test library route', () => {
-  test('responds to post /library', async () => {
-    const res = await request.post('/library').send({
+describe('Test Handlers', () => {
+  test('responds to post /users', async () => {
+    const res = await request.post('/users').send({
       firstName: 'Emily',
       lastName: 'Button',
       email: 'emilyButton@gmail.com',
