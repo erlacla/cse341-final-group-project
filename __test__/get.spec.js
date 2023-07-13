@@ -1,7 +1,7 @@
 const getRoutes = require('../routes/get');
 const supertest = require('supertest');
 const { expect } = require('@jest/globals');
-const request = supertest(app);
+const request = supertest(getRoutes);
 
 describe('Test Handlers', () => {
   test('responds to /', async () => {

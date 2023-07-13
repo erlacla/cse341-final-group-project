@@ -1,22 +1,22 @@
-const dotenv = require("dotenv");
-const { default: mongoose } = require("mongoose");
+const dotenv = require('dotenv');
+const { default: mongoose } = require('mongoose');
 dotenv.config();
-const MongoClient = require("mongodb").MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 
 let _db;
 
 const initDb = async (callback) => {
   if (_db) {
-    console.log("Db is already initialized!");
+    console.log('Db is already initialized!');
     return callback(null, _db);
   }
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      dbName: "LibraryServe",
+      dbName: 'LibraryServe',
     });
-    console.log("conne");
+    console.log('conne');
   } catch (err) {
     console.log(err);
   }
@@ -32,7 +32,7 @@ const initDb = async (callback) => {
 
 const getDb = () => {
   if (!_db) {
-    throw Error("Db not initialized");
+    throw Error('Db not initialized');
   }
   return _db;
 };
