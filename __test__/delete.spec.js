@@ -3,9 +3,9 @@ const supertest = require('supertest');
 const { expect } = require('@jest/globals');
 const request = supertest(app);
 
-describe('Test Library POST requests', () => {
+describe('Test Library DELETE requests', () => {
   test('responds to post /routes/library', async () => {
-    const res = await request.post('/routes/library').send({
+    const res = await request.delete('/routes/library').send({
       name: 'West Library',
       email: 'wlibrary@libraryserver.com',
       address: 'address',
