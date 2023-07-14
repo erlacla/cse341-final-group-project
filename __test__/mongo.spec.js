@@ -11,7 +11,7 @@ describe('insert', () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = connection.db('library');
+    db = connection.db('mockConnection');
   });
   afterAll(async () => {
     await connection.close();
@@ -20,10 +20,10 @@ describe('insert', () => {
   it(
     'should insert a new library into the library collection',
     async () => {
-      const users = db.collection('library');
+      const library = db.collection('library');
 
       const mockLibrary = {
-        id: 'some-user-id',
+        id: 'some-library-id',
         name: 'Emily',
         email: 'emilyButton@gmail.com',
         address: 'address',
@@ -34,18 +34,18 @@ describe('insert', () => {
         image: 'image',
       };
 
-      await users.insertOne(mockLibrary);
+      await library.insertOne(mockLibrary);
 
-      const insertedLibrary = await users.findOne({ id: 'some-user-id' });
+      const insertedLibrary = await library.findOne({ id: 'some-library-id' });
 
       expect(insertedLibrary).toEqual(mockLibrary);
     },
 
     it('should delete a user from the users collection', async () => {
-      const users = db.collection('library');
-      await users.deleteMany({ id: 'some-user-id' });
-      const deletedUser = await users.findOne({ id: 'some-user-id' });
-      expect(deletedUser).toEqual(null);
+      const library = db.collection('library');
+      await library.deleteMany({ id: 'some-library-id' });
+      const deletedLibrary = await library.findOne({ id: 'some-library-id' });
+      expect(deletedLibrary).toEqual(null);
     })
   );
 });
