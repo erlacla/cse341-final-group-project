@@ -32,4 +32,24 @@ describe('Test DELETE requests', () => {
     const res = await request.delete('/book/:bookId');
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
+
+  test('responds to /book/image/:bookId', async () => {
+    const res = await request.delete('/book/image/:bookId');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /account/:accountId', async () => {
+    const res = await request.delete('/account/:accountId');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /history/:historyId', async () => {
+    const res = await request.delete('/history/:historyId');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /status/:statusId', async () => {
+    const res = await request.delete('/status/:statusId');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
 });

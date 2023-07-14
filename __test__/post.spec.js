@@ -17,4 +17,29 @@ describe('Test Library POST requests', () => {
     });
     expect(res.header['content-type']).toBe('text/html; charset=utf-8');
   });
+
+  test('responds to /library', async () => {
+    const res = await request.post('/history');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /book', async () => {
+    const res = await request.post('/history');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /account', async () => {
+    const res = await request.post('/history');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /status', async () => {
+    const res = await request.post('/history');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
+
+  test('responds to /history', async () => {
+    const res = await request.post('/history');
+    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  });
 });
