@@ -1,7 +1,10 @@
 const routes = require("express").Router();
 
 routes.get("/", (req, res) => {
-  res.send("Database is connected");
+  res.render("index", {
+    title: "LibraryServe",
+    isAuthenticated: req.oidc.isAuthenticated(),
+  });
 });
 
 routes.use("/", require("./swagger"));

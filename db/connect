@@ -16,7 +16,6 @@ const initDb = async (callback) => {
       useUnifiedTopology: true,
       dbName: 'LibraryServe',
     });
-    // console.log('conne');
   } catch (err) {
     console.log(err);
   }
