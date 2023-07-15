@@ -10,6 +10,7 @@
   "scripts": {
     "test": "jest --coverage --detectOpenHandles",
     "devStart": "nodemon ./bin/www",
+    "devStart2": "start http://localhost:8080 && nodemon server.js",
     "start": "node server.js",
     "swagger": "node ./swagger.js"
   },

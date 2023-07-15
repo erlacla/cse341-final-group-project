@@ -43,6 +43,6 @@ describe('Test POST controller requests', () => {
   };
   test('responds to createLibrary', async () => {
     const res = await request.createLibrary(createLib);
-    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+    expect(res.content-type).toBe('application/json; charset=utf-8');
   });
 });
