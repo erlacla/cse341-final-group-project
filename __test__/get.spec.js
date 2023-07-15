@@ -29,10 +29,18 @@ describe('Test GET requests', () => {
     expect(res.header['content-type']).toBe('application/json; charset=utf-8');
   });
 
+  // const getBook = {
+  //   bookId: '64adc73ef780fefe60616500',
+  //   parameter: 'genre',
+  // };
   // test('responds to /book/:bookId/:parameter', async () => {
-  //   const res = await request.get('/book/:bookId/:parameter');
-  //   expect(res.header['content-type']).toBe('application/json; charset=utf-8');
-  // });
+  //   const response = await request
+  //     .get('/book/:bookId/:parameter')
+  //     .send(getBook);
+  //   //expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+  //   // expect(res.statusCode).toBe(200);
+  //   expect(response.body.data.length >= 1).toBe(true);
+  // }, 70000);
 
   test('responds to /account', async () => {
     const res = await request.get('/account');
@@ -57,7 +65,7 @@ describe('Test GET requests', () => {
   // test('responds to /status/:statusId/:parameter', async () => {
   //   const res = await request.get('/status/:statusId/:parameter');
   //   expect(res.header['content-type']).toBe('application/json; charset=utf-8');
-  // });
+  // }, 70000);
 
   test('responds to /history', async () => {
     const res = await request.get('/history');

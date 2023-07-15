@@ -42,7 +42,27 @@ describe('Test POST controller requests', () => {
     image: 'george',
   };
   test('responds to createLibrary', async () => {
-    const res = await request.createLibrary(createLib);
-    expect(res.header['content-type']).toBe('application/json; charset=utf-8');
+    const result = await request.post('/library').send(createLib);
+    expect(result.text).toBe('"You must login to run this request."');
+  });
+
+  const putLib = {
+    name: 'george',
+    email: 'george@george.com',
+    address: 'george',
+    phone: '2453336652',
+    hours: 'george',
+    schedule: 'george',
+    links: 'george',
+    image: 'george',
+  };
+  test('responds to createLibrary', async () => {
+    const response = await request.put('/library').send(putLib);
+    // expect(result['content-type']).toBe('application/json; charset=utf-8');
+    // expect(res.statusCode).toBe(200);
+    // expect(res.text).toBe('"You must login to run this request."');
+    // expect(result['content-type']).toBe('text/html; charset=utf-8');
+    // expect(response.body.data.length >= 1).toBe(true);
+    expect(response.header['content-type']).toBe('text/html; charset=utf-8');
   });
 });

@@ -1,6 +1,6 @@
 const express = require("express");
-const path = require('path');
-const cookieParser = require('cookie-parser');
+const path = require("path");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const mongodb = require("./db/connect");
 const { auth } = require("express-openid-connect");
@@ -17,8 +17,6 @@ const config = {
   issuerBaseURL: process.env.ISSUER_BASE_URL,
 };
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app
   .set("views", "views")
   .set("view engine", "ejs")
@@ -26,14 +24,14 @@ app
   .use(cookieParser())
   .use(express.json())
   .use(express.text())
-  .use(express.urlencoded({ extended: true }))
+  .use(express.urlencoded({ extended: false }))
   .use(express.static("public"))
   .use("/", require("./routes"));
 
 mongodb.initDb((err) => {
   if (err) {
     console.log(err);
-  } else if (process.env.NODE_ENV !== 'test') {
+  } else if (process.env.NODE_ENV !== "test") {
     app.listen(port);
     // console.log(`Connected to DB and listening on ${port}`);
   }
