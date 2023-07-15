@@ -42,6 +42,7 @@ describe('Test POST controller requests', () => {
     image: 'george',
   };
   test('responds to createLibrary', async () => {
+<<<<<<< HEAD
     const result = await request.post('/library').send(createLib);
     expect(result.text).toBe('"You must login to run this request."');
   });
@@ -64,5 +65,9 @@ describe('Test POST controller requests', () => {
     // expect(result['content-type']).toBe('text/html; charset=utf-8');
     // expect(response.body.data.length >= 1).toBe(true);
     expect(response.header['content-type']).toBe('text/html; charset=utf-8');
+=======
+    const res = await request.createLibrary(createLib);
+    expect(res.content-type).toBe('application/json; charset=utf-8');
+>>>>>>> bc8a7022c6df91096487097de7752e2d958226c4
   });
 });
