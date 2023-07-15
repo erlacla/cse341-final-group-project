@@ -42,7 +42,7 @@ describe('Test POST controller requests', () => {
     image: 'george',
   };
   test('responds to createLibrary', async () => {
-    const res = await request.createLibrary(createLib);
-    expect(res.content-type).toBe('application/json; charset=utf-8');
+    const res = await request.post('/library').send(createLib);
+    expect(res.text).toBe('"You must login to run this request."');
   });
 });

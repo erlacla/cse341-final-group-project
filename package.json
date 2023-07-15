@@ -8,7 +8,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "jest --coverage --detectOpenHandles",
+    "test": "jest --coverage --detectOpenHandles --silent",
     "devStart": "nodemon ./bin/www",
     "devStart2": "start http://localhost:8080 && nodemon server.js",
     "start": "node server.js",
